@@ -9,7 +9,7 @@
               </div>
               <div class="row mt-2">
                 <div class="col-12">
-                  <form class="tm-login-form" (submit)="login()">
+                  <form class="tm-login-form" [formGroup]="loginForm" (submit)="login()">
                     <div class="form-group">
                       <label for="username">Username</label>
                       <input
@@ -17,9 +17,11 @@
                         type="email"
                         class="form-control validate"
                         id="username"
-                        placeholder="Please Enter Email"  name="email" [(ngModel)]="credentials.a_email"
-                        required
+                        placeholder="Please Enter Email"  
+                        formControlName="a_email"
                       />
+                      <br>
+                      <span class="help-block" *ngIf="!loginForm.get('a_email').valid && loginForm.get('a_email').touched">Please Enter Valid Email</span>
                     </div>
                     <div class="form-group mt-3">
                       <label for="password">Password</label>
@@ -28,17 +30,17 @@
                         type="password"
                         class="form-control validate"
                         id="password"
-                        placeholder="Please Enter Password"  name="password" [(ngModel)]="credentials.a_password"
-                        required
+                        placeholder="Please Enter Password"  
+                        formControlName="a_password"
                       />
+                      <br>
+                      <span class="help-block" *ngIf="!loginForm.get('a_password').valid && loginForm.get('a_password').touched">Please Enter Password</span>
                     </div>
+
                     <div class="form-group mt-4">
                       <button
                         type="submit"
-                        class="btn btn-primary btn-block text-uppercase"
-                       
-                        >
-                        Login
+                        class="btn btn-primary btn-block text-uppercase"> Login
                       </button>
                     </div>
                     <button class="mt-5 btn btn-primary btn-block text-uppercase">

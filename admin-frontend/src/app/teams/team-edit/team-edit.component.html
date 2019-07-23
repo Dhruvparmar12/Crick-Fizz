@@ -6,6 +6,7 @@
             <div class="form-group col-lg-12">
               <label for="name">Team Name</label>
               <input id="name" type="text" class="form-control validate" formControlName="team_name"/>
+              <span class="help-block" *ngIf="!updateForm.get('team_name').valid && updateForm.get('team_name').touched">Please Enter Team Name</span>
             </div>
             <div class="form-group col-lg-12">
               <label for="email">Team Logo</label>
@@ -18,15 +19,16 @@
             </div>
             <br>
             <div class="form-group col-lg-12">
-                <label for="email">Team Desc</label>
+                <label for="desc">Team Desc</label>
                
                 <input
-                  id="email"
+                  id="desc"
                   formControlName="team_desc"
-                  type="email"
+                  type="text"
                   class="form-control validate"
                  
                 />
+                <span class="help-block" *ngIf="!updateForm.get('team_desc').valid && updateForm.get('team_desc').touched">Please Enter Team Description</span>
               </div>
               <div class="col-12">
               <button
