@@ -19,9 +19,9 @@
                     <tr *ngFor="let data of teams">
                       
                       <td class="tm-product-name">{{data?.team_name}}</td>
-                      <td>{{data?.team_logo}}</td>
-                      <!-- <td> <img src="{{data?.team_image}}" class="img-circle" alt="Cinque Terre" width="50" height="50"> </td> -->
-                      <td>{{data?.team_desc}}</td>
+                      <!-- <td>{{data?.team_logo}}</td> -->
+                      <td> <img src="{{data?.team_logo}}" class="img-circle" alt="no img" width="50" height="35"> </td>
+                       <td>{{data?.team_desc}}</td>
                       <td> <a  class="tm-product-delete-link"  (click)="onEdit(data?.team_id)">
                             <i class="fas fa-pencil-alt"></i>
                           </a>
@@ -32,7 +32,7 @@
                         </a>
                       </td>
                     </tr>
-                  
+                 
                   </tbody>
                 </table>
               </div>

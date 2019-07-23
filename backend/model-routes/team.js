@@ -25,10 +25,8 @@ const upload=multer({storage:storage}).single('team_image');
 team.post("/add",upload,(req,res)=>{
     if(jwt.verify(req.headers['authorization'],process.env.SECRET_KEY)){
 
-        console.log(req.file);
-        console.log(req.body);
         const name=req.body.team_name
-         const logo=req.file.filename
+         const logo='http://localhost:1313/'+req.file.filename
          const desc=req.body.team_desc
         
         
@@ -113,23 +111,34 @@ team.get('/team/:id',(req,res)=>{
 
 //update teamDetails
 
-team.patch('/update/:id',(req,res)=>{
+team.patch('/update/:id',upload,(req,res)=>{
 
-    var decoded=jwt.verify(req.headers['authorization'],process.env.SECRET_KEY) 
-   
-    
-    const que=`update team set team_name='${req.body.team_name}',team_logo='${req.body.team_logo}',team_desc='${req.body.team_desc}' where team_id='${req.params.id}'`;
-   
-    con.query(que,(err,result)=>{
-           
-        if(result){
-            res.json(result)
+    if(jwt.verify(req.headers['authorization'],process.env.SECRET_KEY)){
+       
+        let image='';
+
+        if(!req.file){
+                image=req.body.team_logo
         }
         else{
-            res.send(err)
+            image='http://localhost:1313/'+req.file.filename
         }
-    })
+            const que=`update team set team_name='${req.body.team_name}',team_logo='${image}',team_desc='${req.body.team_desc}' where team_id='${req.params.id}'`;
+   
+            con.query(que,(err,result)=>{
+           
+            if(result){
+                res.json(result)
+            }
+            else{
+                res.send(err)
+            }
+            })
 
+    } 
+   
+    
+    
 
 })
 

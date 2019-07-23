@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamService, TeamDetails } from '../team.service'
 import {Router, ActivatedRoute } from '@angular/router'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-team-edit',
@@ -24,6 +25,17 @@ export class TeamEditComponent implements OnInit {
     
     
   }
+  selectedFile:File;
+
+  logo;
+
+ updateForm= new FormGroup({
+    team_name:new FormControl(null,Validators.required),
+    team_image:new FormControl(null,Validators.required),
+    
+    team_desc:new FormControl(null,Validators.required)
+})
+
 
 
   constructor(private team:TeamService,private route:Router,private router:ActivatedRoute) {}
@@ -35,9 +47,12 @@ export class TeamEditComponent implements OnInit {
 
     this.team.findTeam(id['id']).subscribe(
       team=>{
-        console.log(id['id'])
-        this.editdetails=team[0]
-        console.log(this.editdetails)
+        this.logo=team[0].team_logo;
+        this.updateForm.setValue({
+          team_name:team[0].team_name,
+          team_desc:team[0].team_desc,          
+          team_image:''
+        })
       },
       err=>{
         console.log(err)
@@ -47,14 +62,40 @@ export class TeamEditComponent implements OnInit {
     
     
   }
+  onFileSelect(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      
+      this.selectedFile = file;
+
+    }
+    
+  }
 
   onUpdate(){
+   
     
-    this.credentials.team_name=this.team_name;
-    this.credentials.team_logo=this.team_logo;
-    this.credentials.team_desc=this.team_desc
+  
+    
 
-    this.team.updateTeam(this.credentials).subscribe(data=>{
+    const formData= new FormData();
+    formData.append('team_name',this.updateForm.value.team_name)
+    formData.append('team_image',this.selectedFile)
+    formData.append('team_logo',this.logo)
+    formData.append('team_desc',this.updateForm.value.team_desc)
+
+    // console.log('name',formData.get('team_name'))
+    // console.log('image',formData.get('team_image'))
+    // console.log('logo',formData.get('team_logo'))
+    // console.log('desc',formData.get('team_desc'))
+    // console.log(this.logo)
+
+
+  
+
+
+
+    this.team.updateTeam(formData).subscribe(data=>{
         if(data){
           alert('data updated')
           this.route.navigate(['/team'])

@@ -17,9 +17,13 @@ export class TeamsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  getData(){
     this.team.getTeam().subscribe(team=>{
       if(team){
-        console.log(team)
+       
         this.teams=team
       }else{
         console.log('No Team Available')
@@ -27,7 +31,6 @@ export class TeamsComponent implements OnInit {
       
     })
   }
-
 
   onEdit(index:number){
      this.route.navigate(['/editteam',+index])
@@ -38,6 +41,7 @@ export class TeamsComponent implements OnInit {
    
     this.team.deleteTeam(index).subscribe(team=>{
       console.log(team)
+      this.getData();
     },err=>{
       console.log(err)
     })

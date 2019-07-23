@@ -48,7 +48,7 @@ export class TeamService {
   }
 
 
-  public updateTeam(data:TeamDetails): Observable<any> {
+  public updateTeam(data): Observable<any> {
 
     return this.http.patch(`http://localhost:1313/team/update/${this.index}`,data,{
       headers: { Authorization: ` ${this.auth.getToken()}` }
