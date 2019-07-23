@@ -1,0 +1,60 @@
+<div class="container" style="padding-top: 50px; padding-left: 250px">
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+              <h2 class="tm-block-title">Edit Player Information</h2>
+    
+              <form class="tm-signup-form row" [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+                <div class="form-group col-lg-12">
+                  <label for="name">Team name</label>
+                  <br>
+                  <select formControlName="team_name" style="width:250px;height:45px;background-color:rgb(118, 123, 135)">
+                    <option *ngFor="let team of TeamData" [ngValue]="team?.team_id">
+                      {{team.team_name}}
+                    </option>
+                      </select>
+                    
+                    <span class="help-block" *ngIf="!updateForm.get('team_name').valid && updateForm.get('team_name').touched">Please Select Team</span>
+                </div>
+               
+                <div class="form-group col-lg-12">
+                  <label for="email">Player Name</label>
+                  <input
+                    id="email"
+                    formControlName="p_name"
+                    type="text"
+                    class="form-control validate"/>
+                    <br>
+                    <span class="help-block" *ngIf="!updateForm.get('p_name').valid && updateForm.get('p_name').touched">Please Enter Player Name</span>
+                </div>
+                <div class="form-group col-lg-12">
+                        <label for="p_runs">Player Runs</label>
+                        <input
+                          id="p_runs"
+                          formControlName="p_runs"
+                          type="text"
+                          class="form-control validate"/>
+                          <br>
+                          <span class="help-block" *ngIf="!updateForm.get('p_runs').valid && updateForm.get('p_runs').touched">Please Enter Runs</span>
+                      </div>
+                      <div class="form-group col-lg-12">
+                            <label for="email">Player Type</label>
+                            <input
+                              id="p_type"
+                              formControlName="p_type"
+                              type="text"
+                              class="form-control validate"/>
+                              <br>
+                              <span class="help-block" *ngIf="!updateForm.get('p_type').valid && updateForm.get('p_type').touched">Please Enter Type</span>
+                          </div>
+                  <div class="col-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block text-uppercase" > 
+                    Update  Information
+                  </button>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div> 

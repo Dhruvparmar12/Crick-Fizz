@@ -1,0 +1,47 @@
+<div class="container mt-5" style="width: auto">
+        <div class="row tm-content-row">
+          <!-- <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col"> -->
+            <div class="tm-bg-primary-dark tm-block tm-block-products">
+              <div class="tm-product-table-container">
+                <table class="table table-hover tm-table-small tm-product-table">
+                  <thead>
+                    <tr>
+                      
+                      <th scope="col">Team Name</th>
+                      <th scope="col">Team Logo</th>
+                      <th scope="col">Team Desc</th>
+                      <th scope="col">Edit</th>
+                      <th scope="col">Delete</th>
+                        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of teams">
+                      
+                      <td class="tm-product-name">{{data?.team_name}}</td>
+                      <td>{{data?.team_logo}}</td>
+                      <!-- <td> <img src="{{data?.team_image}}" class="img-circle" alt="Cinque Terre" width="50" height="50"> </td> -->
+                      <td>{{data?.team_desc}}</td>
+                      <td> <a  class="tm-product-delete-link"  (click)="onEdit(data?.team_id)">
+                            <i class="fas fa-pencil-alt"></i>
+                          </a>
+                      </td>
+                      <td>
+                        <a class="tm-product-delete-link" (click)="deleteTeam(data?.team_id)">
+                          <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  
+                  </tbody>
+                </table>
+              </div>
+              <!-- table container -->
+              <a
+              routerLink="/addteam"
+                class="btn btn-primary btn-block text-uppercase mb-3">Add new Team</a>
+              
+          <!-- </div> -->
+          
+        </div>
+      </div>

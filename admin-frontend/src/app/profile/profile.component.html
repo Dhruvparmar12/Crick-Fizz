@@ -1,0 +1,40 @@
+<div class="container" style="padding-top: 150px; padding-left: 250px">
+    <div class="tm-block-col tm-col-account-settings">
+        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+          <h2 class="tm-block-title">Account Settings</h2>
+
+          <form class="tm-signup-form row" [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+            <div class="form-group col-lg-12">
+              <label for="name">Account Name</label>
+              <input
+                id="name"
+                formControlName="a_name"
+                type="text"
+                class="form-control validate"/>
+                <br>
+                <span class="help-block" *ngIf="!updateForm.get('a_name').valid && updateForm.get('a_name').touched">Please Enter Admin Name</span>
+            </div>
+           
+            <div class="form-group col-lg-12">
+              <label for="email">Account Email</label>
+              <input
+                id="email"
+                formControlName="a_email"
+                type="email"
+                class="form-control validate"/>
+                <br>
+                <span class="help-block" *ngIf="!updateForm.get('a_email').valid && updateForm.get('a_email').touched">Please Enter Valid Email</span>
+            </div>
+              <div class="col-12">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block text-uppercase" >
+                
+                Update Your Account
+              </button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div> 

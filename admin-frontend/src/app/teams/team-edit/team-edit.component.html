@@ -1,0 +1,47 @@
+<div class="container" style="padding-top: 150px; padding-left: 250px; width: auto">
+    <div class="tm-block-col tm-col-account-settings">
+        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+          <h2 class="tm-block-title">Update Team Data</h2>
+          <form  class="tm-signup-form row" (submit)="onUpdate()">
+            <div class="form-group col-lg-12">
+              <label for="name">Team Name</label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                class="form-control validate"
+                value="{{editdetails?.team_name}}"
+                [(ngModel)]="team_name"
+              />
+            </div>
+            <div class="form-group col-lg-12">
+              <label for="email">Team Logo</label>
+             
+                
+              <input name="image"  type="file" id="fileName" accept=".jpg,.jpeg,.png"  [(ngModel)]="team_logo"/>
+            
+            </div>
+            <br>
+            <div class="form-group col-lg-12">
+                <label for="email">Team Desc</label>
+                <input
+                  id="email"
+                  name="team_desc"
+                  type="email"
+                  class="form-control validate"
+                  value={{editdetails?.team_desc}}
+                  [(ngModel)]="team_desc"
+                />
+              </div>
+              <div class="col-12">
+              <button
+                type="submit"
+                class="btn btn-primary btn-block text-uppercase">
+              
+                Update Team Data
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> 

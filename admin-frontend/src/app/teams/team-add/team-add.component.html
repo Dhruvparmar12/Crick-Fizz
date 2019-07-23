@@ -1,0 +1,74 @@
+<div class="container tm-mt-big tm-mb-big">
+        <div class="row">
+          <div class="col-12 mx-auto tm-login-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <h2 class="tm-block-title mb-4">Add Team Data</h2>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-12">
+                  <form class="tm-login-form" (submit)="addData()">
+                    <div class="form-group">
+                      <label for="username">Team Name</label>
+                      <input
+                       
+                        type="text"
+                        class="form-control validate"
+                        
+                        placeholder="Please Enter Email"  name="team_name" [(ngModel)]="credentials.team_name"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                            <label for="username">Team Logo</label>
+                            <input
+                             
+                              type="file"
+                              class="form-control validate"
+                              accept=".jpg,.jpeg,.png"
+                              onchange="validateFileType()"
+                                name="team_image" [(ngModel)]="credentials.team_logo"
+                              required
+                            />
+                          </div>
+                            <script type="text/javascript">
+
+                
+                             function validateFileType(){
+                                
+                                var fileName = document.getElementById("fileName").value;
+                                var idxDot = fileName.lastIndexOf(".") + 1;
+                                var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+                                if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+                                    //TO DO
+                                }else{
+                                    alert("Only jpg/jpeg and png files are allowed!");
+                                }   
+                             }
+                </script>
+                    <div class="form-group mt-3">
+                      <label for="password">Team Description</label>
+                      <input
+                        type="text"
+                        class="form-control validate"
+                        placeholder="Please Enter Description"  name="team_desc" [(ngModel)]="credentials.team_desc"
+                        required
+                      />
+                    </div>
+                    <div class="form-group mt-4">
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-block text-uppercase">                      
+                        Add Team
+                      </button>
+                    </div>
+                   
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>

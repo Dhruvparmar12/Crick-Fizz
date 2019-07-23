@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- <meta charset="utf-8"> 
+  <title>AdminFrontend</title>
+ 
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
+
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product Admin - Dashboard HTML Template</title>
+    <base href="/">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <!-- https://fonts.google.com/specimen/Roboto -->
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- https://getbootstrap.com/ -->
+    <link rel="stylesheet" href="assets/css/templatemo-style.css">
+</head>
+<!-- <body>
+  
+</body> -->
+<body id="reportsPage">
+  <div class="" id="home">
+      <app-root></app-root>
+               <!-- row -->
+         
+      </div>
+     
+  </div>
+
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+  <!-- https://jquery.com/download/ -->
+  <script src="assets/js/moment.min.js"></script>
+  <!-- https://momentjs.com/ -->
+  <script src="assets/js/Chart.min.js"></script>
+  <!-- http://www.chartjs.org/docs/latest/ -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- https://getbootstrap.com/ -->
+  <script src="assets/js/tooplate-scripts.js"></script>
+ 
+  <!-- https://jquery.com/download/ -->
+  <script src="assets/jquery-ui-datepicker/jquery-ui.min.js"></script>
+  <!-- https://jqueryui.com/download/ -->
+  
+  <script>
+    $(function() {
+      $("#expire_date").datepicker();
+    });
+  </script>
+  <script>
+      Chart.defaults.global.defaultFontColor = 'white';
+      let ctxLine,
+          ctxBar,
+          ctxPie,
+          optionsLine,
+          optionsBar,
+          optionsPie,
+          configLine,
+          configBar,
+          configPie,
+          lineChart;
+     
+      // DOM is ready
+      $(function () {
+          drawLineChart(); // Line Chart
+          drawBarChart(); // Bar Chart
+          drawPieChart(); // Pie Chart
+
+          $(window).resize(function () {
+              updateLineChart();
+              updateBarChart();                
+          });
+      })
+  </script>
+  
+</body>
+
+</html>
