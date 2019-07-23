@@ -1,7 +1,5 @@
 const express=require('express');
-const mysql=require('mysql');
 const app=express();
-const jwt=require('jsonwebtoken');
 const bodyparser=require("body-parser");
 const cors=require('cors');
 const port= process.env.port || 1313
