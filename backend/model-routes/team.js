@@ -2,27 +2,35 @@
 const express=require('express');
 const team=express.Router()
 const cors=require('cors');
+const multer=require('multer');
 const jwt=require('jsonwebtoken');
-const bcrypt=require('bcrypt');
+
 const con=require('../connection/db')
 team.use(cors());
 
 process.env.SECRET_KEY='secret'
 
+const storage= multer.diskStorage({
+    destination:(req,file,cb)=>{
+        cb(null,'./images')
+    },
+    filename:(req,file,cb)=>{
+        console.log(file);
+        cb(null,'image-'+Date.now()+file.originalname)
+    }
+})
 
-team.post("/add",(req,res)=>{
+const upload=multer({storage:storage}).single('team_image');
 
-   
+team.post("/add",upload,(req,res)=>{
     if(jwt.verify(req.headers['authorization'],process.env.SECRET_KEY)){
 
+        console.log(req.file);
+        console.log(req.body);
         const name=req.body.team_name
-         const logo=req.body.team_logo
+         const logo=req.file.filename
          const desc=req.body.team_desc
-         const teamData={
-                team_name:name,
-                team_logo:logo,
-                team_desc:desc
-        }
+        
         
         var sql = `insert into team(team_name,team_logo,team_desc) values('${name}','${logo}','${desc}')`;
 

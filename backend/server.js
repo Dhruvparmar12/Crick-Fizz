@@ -1,11 +1,13 @@
 const express=require('express');
 const app=express();
+
 const bodyparser=require("body-parser");
 const cors=require('cors');
 const port= process.env.port || 1313
 app.use(bodyparser.json());
 app.use(cors());
 app.use(bodyparser.urlencoded({extended:false}));
+
 
 
   
@@ -20,6 +22,7 @@ app.use('/admin',Admin)
 app.use('/team',Team)
 app.use('/player',player)
 app.use('/match',match)
+
 
 
 

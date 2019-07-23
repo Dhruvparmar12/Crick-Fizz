@@ -40,7 +40,8 @@ export class TeamService {
   }
 
   
-  public addTeam(data:TeamDetails):Observable<any>{
+  public addTeam(data):Observable<any>{
+    
     return this.http.post(`http://localhost:1313/team/add`,data,{
       headers: { Authorization: ` ${this.auth.getToken()}` }
     })

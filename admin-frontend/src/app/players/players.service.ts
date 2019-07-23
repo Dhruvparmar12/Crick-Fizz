@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { identifierModuleUrl } from '@angular/compiler';
+
 
 export interface players{
 
