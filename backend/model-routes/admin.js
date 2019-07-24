@@ -6,6 +6,7 @@ const jwt=require('jsonwebtoken');
 const bcrypt=require('bcrypt');
 const con=require('../connection/db')
 admin.use(cors());
+const nodemailer=require('nodemailer')
 
 process.env.SECRET_KEY='secret'
 
@@ -165,6 +166,77 @@ admin.patch('/update/:id',(req,res)=>{
 
 })
 
+// Forget Password
 
+admin.post('/forgetpassword',(req,res)=>{
+
+    const body=`<h3>Go to this Link and Reset your Password</h3>
+                <br>
+                <a>http://localhost:4200/passwordreset</a>`
+
+        const a_email=req.body.a_email;
+        const que=`select * from admin where a_email='${a_email}'`;
+        con.query(que,(err,result)=>{
+        if(!result.length==0){
+            
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                       user: 'dhruv.parmar.sa@gmail.com',
+                       pass: 'rd7600959694'
+                   }
+               });
+          
+            
+            const mailOptions = {
+                from: 'dhruv.parmar.sa@gmail.com', 
+                to: a_email, 
+                subject: 'Password Recover', 
+             
+                html: body
+              };
+          
+            
+            transporter.sendMail(mailOptions, function (err, info) {
+                if(err)
+                  res.send(err)
+                else
+                  res.send(info);
+             });
+        
+        }
+        else{
+            res.send('admin Does not Exists')
+        }
+    })
+        
+       
+
+        
+    
+    })
+    admin.patch('/resetpassword',(req,res)=>{
+      
+        
+    
+        a_password=bcrypt.hashSync(req.body.a_password,10);
+        
+        const que=`update admin set a_password='${a_password}' where a_email='${req.body.a_email}'`;
+   
+        
+        con.query(que,(err,result)=>{
+          
+        if(result){
+            res.send({msg:'Password Updated'})
+        }
+        else{
+            res.send(err)
+        }
+    })
+
+
+        
+    
+})
 
 module.exports=admin

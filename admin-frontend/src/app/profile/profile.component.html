@@ -1,7 +1,7 @@
 <div class="container" style="padding-top: 150px; padding-left: 250px">
     <div class="tm-block-col tm-col-account-settings">
         <div class="tm-bg-primary-dark tm-block tm-block-settings">
-          <h2 class="tm-block-title">Account Settings</h2>
+          <h2 class="tm-block-title">Account Settings</h2>  
 
           <form class="tm-signup-form row" [formGroup]="updateForm" (ngSubmit)="onUpdate()">
             <div class="form-group col-lg-12">
@@ -33,6 +33,18 @@
                 Update Your Account
               </button>
             </div>
+            <div class="col-12" style="padding-top:10px">
+              <button
+                type="button"
+                class="btn btn-primary btn-block text-uppercase" 
+                (click)="changePassword()">
+                
+                Change Password
+              </button>
+            </div>
+
+           
+            
           </form>
           
         </div>

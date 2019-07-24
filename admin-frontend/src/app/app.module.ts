@@ -21,6 +21,9 @@ import { TeamAddComponent } from './teams/team-add/team-add.component';
 import { PlayersComponent } from './players/players.component';
 import { PlayerAddComponent } from './players/player-add/player-add.component';
 import { PlayerEditComponent } from './players/player-edit/player-edit.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { PasswordResetComponent } from './forget-password/password-reset/password-reset.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -72,6 +75,20 @@ const routes: Routes = [
     canActivate: [AuthguardService]
     
   },
+  {
+    path: 'forget_password',
+    component: ForgetPasswordComponent,
+        
+  },
+  {
+    path: 'passwordreset',
+    component:PasswordResetComponent,
+        
+  },
+  {
+    path:'changepassword',
+    component:ChangePasswordComponent
+  },
  
 ]
 
@@ -89,7 +106,10 @@ const routes: Routes = [
    
     PlayersComponent,
     PlayerAddComponent,
-    PlayerEditComponent
+    PlayerEditComponent,
+    ForgetPasswordComponent,
+    PasswordResetComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

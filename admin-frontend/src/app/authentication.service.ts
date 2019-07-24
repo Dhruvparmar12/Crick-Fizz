@@ -32,7 +32,7 @@ export interface TokenPayload{
 export class AuthenticationService {
   private token:string
   loginame:string;
-  name:string='dhruv'
+
 
   constructor(private http:HttpClient, private route:Router) { }
 

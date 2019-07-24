@@ -43,4 +43,8 @@ loginForm= new FormGroup({
     )
   }
 
+  forgetpassword(){
+    this.route.navigate(['/forget_password'])
+  }
+
 }
