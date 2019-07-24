@@ -1,0 +1,37 @@
+<div class="container" style="padding-top: 150px; padding-left: 250px; width: auto">
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+              <h2 class="tm-block-title">Add Feed Data</h2>
+              <form  class="tm-signup-form row" [formGroup]="addFeed" (submit)="onAdd()">
+                <div class="form-group col-lg-12">
+                  <label for="name">Feed Title</label>
+                  <input id="name" type="text" class="form-control validate" formControlName="feed_title"/>
+                   <br> <span class="help-block" *ngIf="!addFeed.get('feed_title').valid && addFeed.get('feed_title').touched">Please Enter Feed title</span>
+                </div>
+                
+                <br>
+                <div class="form-group col-lg-12">
+                    <label for="desc">Feed Desc</label>
+                   
+                    <input
+                      id="desc"
+                      formControlName="feed_desc"
+                      type="text"
+                      class="form-control validate"
+                     
+                    />
+                    <br> <span class="help-block" *ngIf="!addFeed.get('feed_desc').valid && addFeed.get('feed_desc').touched">Please Enter Feed Desc</span>
+                  </div>
+                  <div class="col-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block text-uppercase">
+                  
+                    Add Feed Data
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> 
+    

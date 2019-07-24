@@ -1,0 +1,35 @@
+<div class="container" style="padding-top: 150px; padding-left: 250px; width: auto">
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+              <h2 class="tm-block-title">Update Team Data</h2>
+              <form  class="tm-signup-form row" [formGroup]="updateForm" (submit)="onUpdate()">
+                <div class="form-group col-lg-12">
+                  <label for="name">Feed Title</label>
+                  <input id="name" type="text" class="form-control validate" formControlName="feed_title"/>
+                  <span class="help-block" *ngIf="!updateForm.get('feed_title').valid && updateForm.get('feed_title').touched">Please Enter Team Name</span>
+                </div>
+
+                
+                <div class="form-group col-lg-12">
+                    <label for="desc">Feed Desc</label>                   
+                    <input
+                      id="desc"
+                      formControlName="feed_desc"
+                      type="text"
+                      class="form-control validate"                    
+                    />
+                    <span class="help-block" *ngIf="!updateForm.get('feed_desc').valid && updateForm.get('feed_desc').touched">Please Enter Team Description</span>
+                  </div>
+                  <div class="col-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block text-uppercase">
+                  
+                    Update Feed Data
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div> 
+    

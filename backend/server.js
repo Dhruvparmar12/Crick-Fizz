@@ -19,13 +19,13 @@ const Admin=require('./model-routes/admin')
 const Team=require('./model-routes/team')
 const player=require('./model-routes/player')
 const match=require('./model-routes/matches')
-
+const feed=require('./model-routes/feed')
 app.use('/user',User)
 app.use('/admin',Admin)
 app.use('/team',Team)
 app.use('/player',player)
 app.use('/match',match)
-
+app.use('/feed',feed)
 
 
 

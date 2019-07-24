@@ -58,9 +58,7 @@ export class TeamEditComponent implements OnInit {
         console.log(err)
       }
     )
-    });
-    
-    
+    });   
   }
   onFileSelect(event) {
     if (event.target.files.length > 0) {
@@ -74,27 +72,11 @@ export class TeamEditComponent implements OnInit {
 
   onUpdate(){
    
-    
-  
-    
-
     const formData= new FormData();
     formData.append('team_name',this.updateForm.value.team_name)
     formData.append('team_image',this.selectedFile)
     formData.append('team_logo',this.logo)
     formData.append('team_desc',this.updateForm.value.team_desc)
-
-    // console.log('name',formData.get('team_name'))
-    // console.log('image',formData.get('team_image'))
-    // console.log('logo',formData.get('team_logo'))
-    // console.log('desc',formData.get('team_desc'))
-    // console.log(this.logo)
-
-
-  
-
-
-
     this.team.updateTeam(formData).subscribe(data=>{
         if(data){
           alert('data updated')

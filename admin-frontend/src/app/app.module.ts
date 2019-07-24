@@ -24,6 +24,9 @@ import { PlayerEditComponent } from './players/player-edit/player-edit.component
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { PasswordResetComponent } from './forget-password/password-reset/password-reset.component';
 import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { FeedComponent } from './feed/feed.component';
+import { FeedEditComponent } from './feed/feed-edit/feed-edit.component';
+import { FeedAddComponent } from './feed/feed-add/feed-add.component';
 
 const routes: Routes = [
   {path: '',component:HomeComponent},
@@ -89,7 +92,25 @@ const routes: Routes = [
     path:'changepassword',
     component:ChangePasswordComponent
   },
- 
+  {
+    path: 'feed',
+    component: FeedComponent,
+    canActivate: [AuthguardService]
+    
+  },
+  
+  {
+    path: 'feed/:id',
+    component: FeedEditComponent,
+    canActivate: [AuthguardService]
+    
+  },
+  {
+    path: 'addFeed',
+    component: FeedAddComponent,
+    canActivate: [AuthguardService]
+    
+  },
 ]
 
 @NgModule({
@@ -109,7 +130,10 @@ const routes: Routes = [
     PlayerEditComponent,
     ForgetPasswordComponent,
     PasswordResetComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    FeedComponent,
+    FeedEditComponent,
+    FeedAddComponent
   ],
   imports: [
     BrowserModule,

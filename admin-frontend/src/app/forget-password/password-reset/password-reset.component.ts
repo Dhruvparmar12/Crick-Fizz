@@ -33,7 +33,7 @@ export class PasswordResetComponent implements OnInit {
     this.password.updatePassword(this.forgetDataForm.value).subscribe(res=>{
        if(res){
             console.log(res['msg'])   
-            localStorage.removeItem('a_email')
+             localStorage.removeItem('a_email')
             } 
     })
     }

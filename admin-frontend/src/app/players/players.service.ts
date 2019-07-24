@@ -23,6 +23,7 @@ export interface players{
 export class PlayersService {
 
   updated_id;
+  
  constructor(private auth:AuthenticationService, private http:HttpClient) { }
 
 
