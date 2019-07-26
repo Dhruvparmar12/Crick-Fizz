@@ -3,6 +3,7 @@ const express=require('express');
 const admin=express.Router()
 const cors=require('cors');
 const jwt=require('jsonwebtoken');
+
 const bcrypt=require('bcrypt');
 const con=require('../connection/db')
 admin.use(cors());
@@ -192,7 +193,6 @@ admin.post('/forgetpassword',(req,res)=>{
                 from: 'dhruv.parmar.sa@gmail.com', 
                 to: a_email, 
                 subject: 'Password Recover', 
-             
                 html: body
               };
           
